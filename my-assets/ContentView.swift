@@ -7,10 +7,43 @@
 
 import SwiftUI
 
+enum Tab {
+    case asset, recommend, alert, setting
+}
+
 struct ContentView: View {
+    @State private var selection: Tab = .asset
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView(selection: $selection) {
+            Text("자산 페이지")
+                .tabItem {
+                    Image(systemName: "dollarsign.circle.fill")
+                    Text("자산")
+                }
+                .tag(Tab.asset)
+                
+            Text("추천 페이지")
+                .tabItem {
+                    Image(systemName: "hand.thumbsup.fill")
+                    Text("추천")
+                }
+                .tag(Tab.recommend)
+            
+            Text("알림 페이지")
+                .tabItem {
+                    Image(systemName: "bell.fill")
+                    Text("알림")
+                }
+                .tag(Tab.alert)
+            
+            Text("설정 페이지")
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text("설정")
+                }
+                .tag(Tab.setting)
+        }
     }
 }
 
